@@ -9,6 +9,7 @@ import java.awt.event.*;
  * @author Richard
  */
 public final class Raya extends JFrame implements ActionListener {
+
     // Botones
     JButton botones[][];
     JPanel p1;
@@ -54,7 +55,7 @@ public final class Raya extends JFrame implements ActionListener {
                 botones[i][j] = new JButton();
                 //Le damos el oyente de evento
                 botones[i][j].addActionListener(this);
-                    //Le damos un nombre a la accion
+                //Le damos un nombre a la accion
                 botones[i][j].setActionCommand("" + i + j);
                 botones[i][j].setSize(200, 200);
                 add(botones[i][j]);
@@ -67,7 +68,6 @@ public final class Raya extends JFrame implements ActionListener {
         if (jugador.equals("Computadora")) {
             actionPerformed1(jugador);
         }
-
         System.out.println("Turno de " + jugador);
     }
 
@@ -117,23 +117,28 @@ public final class Raya extends JFrame implements ActionListener {
             }
         }
 
-        boolean empate = true;
+        boolean empate = false;
+        int n = 0;
         for (int k = 0; k < a; k++) {
             for (int l = 0; l < a; l++) {
                 if (tablero[k][l] == 0) {
-                    empate = false;
+                    n++;
                 }
             }
         }
-        if (ganaron) {
-            empate = false;
+        if (!ganaron) {
+            if (n == 0) {
+                ganaron = true;
+                empate = true;
+            }
         }
+
         if (empate) {
-            System.out.println("Gano " + nick2);
+            System.out.println("Empataron");
             int x = JOptionPane.showConfirmDialog(rootPane, "Desea jugar nuevamente");
             dispose();
             if (x == 0) {
-                new Raya("Jugador1", "Jugador2");
+                new Raya("Jugador1", "Jugador2").setVisible(true);
             } else {
                 System.exit(x);
             }
@@ -152,7 +157,7 @@ public final class Raya extends JFrame implements ActionListener {
                     int x = JOptionPane.showConfirmDialog(rootPane, "Desea jugar nuevamente");
                     dispose();
                     if (x == 0) {
-                        new Raya("Jugador1", "Computadora");
+                        new Raya("Jugador1", "Jugador2");
                     } else {
                         System.exit(x);
                     }

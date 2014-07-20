@@ -7,6 +7,6 @@
 public class Ejecutor {
 
     public static void main(String[] args) {
-        new Raya("Jugador1", "Computadora").setVisible(true);
+        new Raya("Jugador1", "Jugador2").setVisible(true);
     }
 }
