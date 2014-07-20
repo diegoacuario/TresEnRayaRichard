@@ -1,4 +1,4 @@
 TresEnRayaRichard
 =================
 
-JUgeo de Tres en Rata para Richard
+Juego de Tres en Raya para Richard
